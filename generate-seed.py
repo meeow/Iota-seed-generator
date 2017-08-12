@@ -20,13 +20,13 @@ def generate_seed():
     def generate_timestamp_rn(entropy_rn):
         current_time = time.time()
         random.seed(current_time)
-        timestamp_rn = ''
+        timestamp_rn = []
         for i in range(seed_length):
             timestamp_random_char = random.choice(valid_chars)
             chars = (timestamp_random_char, entropy_rn[i])
-            timestamp_rn = timestamp_rn + random.choice(chars)
+            timestamp_rn.append(random.choice(chars))
         assert(len(timestamp_rn) == 81)
-        return timestamp_rn
+        return ''.join(timestamp_rn)
 
     entropy_rn = generate_entropy_rn()
     return generate_timestamp_rn(entropy_rn)
